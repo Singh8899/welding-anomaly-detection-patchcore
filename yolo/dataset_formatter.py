@@ -13,8 +13,7 @@ dataset/
     └── labels/
 
 Class mapping:
-- bad_weld → 0
-- good_weld → 1
+- weld (both good_weld and bad_weld) → 0
 """
 
 import os
@@ -53,10 +52,10 @@ def parse_xml_annotation(xml_path):
         img_width = int(width_elem.text)
         img_height = int(height_elem.text)
         
-        # Class mapping
+        # Class mapping - single class for all welds
         class_mapping = {
             'bad_weld': 0,
-            'good_weld': 1
+            'good_weld': 0  # Both classes map to same ID for single class detection
         }
         
         objects = []
